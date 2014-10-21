@@ -23,6 +23,10 @@ export default Ember.ArrayController.extend({
         }).save();
 
       });
+    },
+
+    deleteRecord: function(movie) {
+      movie.destroyRecord();
     }
   }
 });

@@ -182,3 +182,11 @@ header .vessel {
   border-bottom: 1px solid #ccc;
   padding: 1em 0;
 }
+
+.delete {
+  padding: .5em;
+  position: absolute;
+  top: 0;
+  right: .2em;
+  cursor: pointer;
+}
