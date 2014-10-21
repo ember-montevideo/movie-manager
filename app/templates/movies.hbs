@@ -1,5 +1,8 @@
 <main>
   <div class="vessel">
+    {{ input value=imdbId }}
+    <button name="button" {{action 'createRecord'}}>Create Record</button>
+    <hr>
     <ul id="movies">
       {{#each}}
       <li>
