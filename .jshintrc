@@ -1,6 +1,7 @@
 {
   "predef": [
     "$",
+    "Firebase",
     "document",
     "window",
     "-Promise"
