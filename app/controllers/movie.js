@@ -2,10 +2,32 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
   imdbBarStyle: function() {
-    return 'width: ' + this.get('imdbScore') * 10 + '%';
+    var imdbScore = this.get('imdbScore');
+    if(Ember.isEmpty(imdbScore)) {
+      return "width: 0";
+    }
+    else {
+      return "width: %@%".fmt(imdbScore * 10);
+    }
   }.property('imdbScore'),
 
   tomatoBarStyle: function() {
-    return 'width: ' + this.get('tomatoScore') * 10 + '%';
-  }.property('tomatoScore')
+    var tomatoScore = this.get('tomatoScore');
+    if(Ember.isEmpty(tomatoScore)) {
+      return "width: 0";
+    }
+    else {
+      return "width: %@%".fmt(tomatoScore * 10);
+    }
+  }.property('tomatoScore'),
+
+  imdbScoreNormalized: function() {
+    var imdbScore = this.get('imdbScore');
+    return Ember.isEmpty(imdbScore) ? 'N/A' : imdbScore;
+  }.property('imdbScore'),
+
+  tomatoScoreNormalized: function() {
+    var tomatoScore = this.get('tomatoScore');
+    return Ember.isEmpty(tomatoScore) ? 'N/A' : tomatoScore;
+  }.property('tomatoScore'),
 });
