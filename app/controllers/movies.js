@@ -9,7 +9,15 @@ export default Ember.ArrayController.extend({
       var store = this.store;
 
       $.getJSON("http://www.omdbapi.com/?i=" + imdbid + "&tomatoes=true").then(function(movie){
-        console.log(movie);
+        var imdbScore = parseInt(movie["imdbRating"], 10);
+        if(isNaN(imdbScore)) {
+          imdbScore = null;
+        }
+
+        var tomatoScore = parseInt(movie["tomatoRating"], 10);
+        if(isNaN(tomatoScore)) {
+          tomatoScore = null;
+        }
 
         store.createRecord('movie', {
           title: movie["Title"],
@@ -17,8 +25,8 @@ export default Ember.ArrayController.extend({
           genre: movie["Genre"],
           actors: movie["Actors"],
           plot: movie["Plot"],
-          imdbScore: parseInt(movie["imdbRating"], 10),
-          tomatoScore: parseInt(movie["tomatoRating"], 10),
+          imdbScore: imdbScore,
+          tomatoScore: tomatoScore,
           poster: movie["Poster"]
         }).save();
 
