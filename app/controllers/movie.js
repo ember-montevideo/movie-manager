@@ -2,32 +2,43 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
   imdbBarStyle: function() {
-    var imdbScore = this.get('imdbScore');
-    if(Ember.isEmpty(imdbScore)) {
+    var score = this.get('imdbScore');
+
+    if(Ember.isEmpty(score)) {
       return "width: 0";
     }
-    else {
-      return "width: %@%".fmt(imdbScore * 10);
-    }
+
+    return "width: %@%".fmt(score * 10);
   }.property('imdbScore'),
 
   tomatoBarStyle: function() {
-    var tomatoScore = this.get('tomatoScore');
-    if(Ember.isEmpty(tomatoScore)) {
+    var score = this.get('tomatoScore');
+
+    if(Ember.isEmpty(score)) {
       return "width: 0";
     }
-    else {
-      return "width: %@%".fmt(tomatoScore * 10);
-    }
+
+    return "width: %@%".fmt(score * 10);
   }.property('tomatoScore'),
 
-  imdbScoreNormalized: function() {
-    var imdbScore = this.get('imdbScore');
-    return Ember.isEmpty(imdbScore) ? 'N/A' : imdbScore;
+  imdbScoreText: function() {
+    var score = this.get('imdbScore');
+
+    return Ember.isEmpty(score) ? '-' : score;
   }.property('imdbScore'),
 
-  tomatoScoreNormalized: function() {
-    var tomatoScore = this.get('tomatoScore');
-    return Ember.isEmpty(tomatoScore) ? 'N/A' : tomatoScore;
+  tomatoScoreText: function() {
+    var score = this.get('tomatoScore');
+
+    return Ember.isEmpty(score) ? '-' : score;
   }.property('tomatoScore'),
+
+  url: function() {
+    return 'http://www.imdb.com/title/%@/'.fmt(this.get("imdbID"));
+  }.property('imdbID'),
+
+  subtitleUrl: function() {
+    /* global encodeURIComponent*/
+    return 'http://www.subdivx.com/index.php?buscar=%@&accion=5&masdesc=&subtitulos=1&realiza_b=1'.fmt(encodeURIComponent(this.get('title')));
+  }.property('title')
 });

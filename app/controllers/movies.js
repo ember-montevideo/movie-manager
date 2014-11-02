@@ -1,32 +1,30 @@
 import Ember from 'ember';
 
+function parseScore(value) {
+  var score = parseInt(value, 10);
+
+  return isNaN(score) ? null : score;
+}
+
 export default Ember.ArrayController.extend({
   itemController: 'movie',
 
   actions: {
     createRecord: function() {
-      var imdbid = this.get("imdbId");
-      var store = this.store;
+      var imdbid = this.get("imdbId"),
+          store = this.store;
 
       $.getJSON("http://www.omdbapi.com/?i=" + imdbid + "&tomatoes=true").then(function(movie){
-        var imdbScore = parseInt(movie["imdbRating"], 10);
-        if(isNaN(imdbScore)) {
-          imdbScore = null;
-        }
-
-        var tomatoScore = parseInt(movie["tomatoRating"], 10);
-        if(isNaN(tomatoScore)) {
-          tomatoScore = null;
-        }
-
         store.createRecord('movie', {
           title: movie["Title"],
           year: movie["Year"],
           genre: movie["Genre"],
           actors: movie["Actors"],
+          director: movie["Director"],
           plot: movie["Plot"],
-          imdbScore: imdbScore,
-          tomatoScore: tomatoScore,
+          imdbScore: parseScore(movie["imdbRating"]),
+          tomatoScore: parseScore(movie["tomatoRating"]),
+          imdbID: movie["imdbID"],
           poster: movie["Poster"]
         }).save();
 
