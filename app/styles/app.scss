@@ -1,0 +1,247 @@
+/* Moviessss yey! */
+
+
+/* vars
+ * ========================== */
+
+$barBlue: #00399b;
+$docColor: #222;
+
+/* end vars */
+
+
+/* Mixins
+ * ========================== */
+
+.clearfix {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+.unlistify {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.transition-all {
+  -webkit-transition: all 250ms ease-in-out;
+     -moz-transition: all 250ms ease-in-out;
+          transition: all 250ms ease-in-out;
+}
+/* end Mixins */
+
+
+
+
+/* Baseline
+ * ========================== */
+
+html {
+  font-size: 1em;
+  line-height: 1.4;
+  font-family: sans-serif;
+  color: $docColor;
+  overflow-y: scroll;
+}
+body {
+  margin: 0;
+  background-color: #d7d7d7;
+}
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+dl {
+  @extend .clearfix;
+  line-height: 1.2;
+}
+dt {
+  float: left;
+  width: 4.75em;
+  clear: left;
+  font-weight: 100;
+}
+dd {
+  float: left;
+  width: calc(100% - 4.75em);
+  margin: 0 0 .5em 0;
+
+  &:last-child {
+    margin: 0;
+  }
+}
+
+/* end Basline */
+
+
+
+
+/* Persistent
+ * ========================== */
+
+main {
+}
+.vessel {
+  padding: 1.4em;
+}
+header .vessel {
+  padding-bottom: 0;
+}
+
+#movies {
+  margin: 0 -.75em;
+  @extend .unlistify;
+  @extend .clearfix;
+}
+#movies > li {
+  float: left;
+  width : 33.3333333333333333%;
+  padding: .75em;
+
+  &:nth-child(3n+1){
+    clear: left;
+  }
+}
+/* end Persistent */
+
+
+
+
+/* Modular
+ * ========================== */
+
+.movie {
+  width: 100%;
+  float: left;
+  position: relative;
+  padding: .75em;
+  background-color: #fff;
+}
+.movie-body {
+  @extend .clearfix;
+}
+.poster,
+.metadata {
+  float: left;
+}
+.poster {
+  width: 42%;
+}
+.poster a {
+  display: block;
+  min-height: 14.7em;
+}
+.poster img {
+  position: absolute;
+  width: 40%;
+  z-index: 7;
+  @extend .transition-all;
+
+  &:hover {
+    z-index: 77;
+    width: 94%;
+    box-shadow: 0 0 1em rgba(0, 0, 0, .5);
+  }
+}
+
+.metadata {
+  width: 57%;
+  padding: 0 0 0 .75em;
+}
+
+.movie header {
+  margin: .4em 0 .75em 0;
+}
+
+.movie header h2 {
+  font-size: 1.4em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.movie header h2 span {
+  font-weight: normal;
+  color: lighten($docColor, 33);
+}
+
+.metadata abbr {
+  border-bottom: 1px dotted gray;
+  cursor: help;
+}
+
+.scores {
+  s {
+    display: block;
+    padding: .1em .5em 0;
+    text-decoration: none;
+    @extend .clearfix;
+  }
+}
+
+.rect u {
+  text-decoration: none;
+}
+
+.rect b {
+  float: right;
+}
+
+.scores .rect,
+.big-bar {
+  font-size: 1em;
+  text-shadow: 0 0 0.2em rgba(77, 77, 77, .37);
+}
+
+.scores .rect s,
+.big-bar s {
+  color: rgba(255, 255, 255, 1);
+}
+
+.text-block {
+  padding: 0;
+}
+
+.text-block p {
+  margin: 1em 0;
+}
+
+.smaller {
+  font-size: .87em;
+}
+
+.details {
+  border-bottom: 1px solid #ccc;
+  padding: 1em 0;
+}
+
+.delete {
+  padding: .5em;
+  position: absolute;
+  top: 0;
+  right: .2em;
+  cursor: pointer;
+}
+/* end Modular */
+
+
+
+
+/* Responsive
+ * ========================== */
+
+/* end Responsive */
+
+
+
+
+/* x
+ * ========================== */
+
+/* end x */

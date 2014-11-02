@@ -1,45 +1,36 @@
 <li>
   <div class="movie">
-    <div class="poster">
-      <a {{bind-attr href=url}}"">
-        <img {{bind-attr src=poster alt=title}}>
-      </a>
+    <header>
+      <h2>{{title}} <span>{{year}}</span></h2>
+    </header>
+    <div class="movie-body">
+      <div class="poster">
+        <a {{bind-attr href=url}}"">
+          <img {{bind-attr src=poster alt=title}}>
+        </a>
+      </div>
+      <div class="metadata">
+        <dl class="details smaller">
+          <dt><abbr title="Internet Movie Database">IMDB</abbr></dt>
+          <dd>{{imdbScoreText}}</dd>
+          <dt><abbr title="Roten Tomatoes">RT</abbr></dt>
+          <dd>{{tomatoScoreText}}</dd>
+          <dt>Actors</dt>
+          <dd>{{actors}}</dd>
+          <dt>Genre:</dt>
+          <dd>{{genre}}</dd>
+          <dt>Director:</dt>
+          <dd>{{director}}</dd>
+        </dl>
+      </div>
     </div>
-    <div class="data">
-      <header>
-        <h2>{{title}} <span>{{year}}</span></h2>
-      </header>
-      <div class="scores">
-        <div class="rect" {{bind-attr style=imdbBarStyle}}>
-          <s>
-            <u>IMDB</u>
-            <b>{{imdbScoreText}}</b>
-          </s>
-        </div>
-        <div class="rect" {{bind-attr style=tomatoBarStyle}}>
-          <s>
-            <u>Rotten Tomatoes</u>
-            <b>{{tomatoScoreText}}</b>
-          </s>
-        </div>
-      </div>
-      <div class="text-block">
-        <p>{{plot}}</p>
-      </div>
-      <div class="text-block smaller">
-        <p>{{actors}}</p>
-      </div>
-      <dl class="details smaller">
-        <dt>Genre:</dt>
-        <dd>{{genre}}</dd>
-        <dt>Director:</dt>
-        <dd>{{director}}</dd>
-      </dl>
-      <div class="text-block smaller">
-        <p>
-        <a {{bind-attr href=subtitleUrl}}>subs</a>
-        </p>
-      </div>
+    <div class="text-block clearfix">
+      <p>{{plot}}</p>
+    </div>
+    <div class="text-block smaller">
+      <p>
+      <a {{bind-attr href=subtitleUrl}}>subs</a>
+      </p>
     </div>
     <span class="delete" {{action "deleteRecord" this}}>&#215;</span>
   </div>
