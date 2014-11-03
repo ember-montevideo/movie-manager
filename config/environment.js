@@ -20,7 +20,7 @@ module.exports = function(environment) {
 
     contentSecurityPolicy: {
       'default-src': "'none'",
-      'script-src': "'self' 'unsafe-eval' https://cdn.firebase.com",
+      'script-src': "'self' 'unsafe-eval' https://*.firebaseio.com",
       'font-src': "'self'",
       'connect-src': "'self' wss://s-dal5-nss-27.firebaseio.com http://www.omdbapi.com",
       'img-src': "'self' http://ia.media-imdb.com",
