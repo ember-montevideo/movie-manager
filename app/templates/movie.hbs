@@ -1,0 +1,37 @@
+<li>
+  <div class="movie">
+    <header>
+      <h2>{{title}} <span>{{year}}</span></h2>
+    </header>
+    <div class="movie-body">
+      <div class="poster">
+        <a {{bind-attr href=url}}"">
+          <img {{bind-attr src=poster alt=title}}>
+        </a>
+      </div>
+      <div class="metadata">
+        <dl class="details smaller">
+          <dt><abbr title="Internet Movie Database">IMDB</abbr></dt>
+          <dd>{{imdbScoreText}}</dd>
+          <dt><abbr title="Roten Tomatoes">RT</abbr></dt>
+          <dd>{{tomatoScoreText}}</dd>
+          <dt>Actors</dt>
+          <dd>{{actors}}</dd>
+          <dt>Genre:</dt>
+          <dd>{{genre}}</dd>
+          <dt>Director:</dt>
+          <dd>{{director}}</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="text-block clearfix">
+      <p>{{plot}}</p>
+    </div>
+    <div class="text-block smaller">
+      <p>
+      <a {{bind-attr href=subtitleUrl}}>subs</a>
+      </p>
+    </div>
+    <span class="delete" {{action "deleteRecord" this}}>&#215;</span>
+  </div>
+</li>
