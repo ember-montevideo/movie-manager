@@ -26,7 +26,9 @@ module.exports = function(environment) {
       'img-src': "'self' http://ia.media-imdb.com",
       'style-src': "'self' 'unsafe-inline'",
       'media-src': "'self'"
-    }
+    },
+
+    firebaseURL: 'https://movie-manager.firebaseio.com/movie'
   };
 
   if (environment === 'development') {
