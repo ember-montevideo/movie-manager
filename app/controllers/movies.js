@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 function parseScore(value) {
-  var score = parseInt(value, 10);
+  var score = parseFloat(value, 10);
 
   return isNaN(score) ? null : score;
 }
